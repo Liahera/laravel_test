@@ -18,6 +18,6 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-
 Route::get('/kharkiv', [WeatherKharkivController::class, 'index']);
 Route::get('/lviv', [WeatherLvivController::class, 'index']);
+

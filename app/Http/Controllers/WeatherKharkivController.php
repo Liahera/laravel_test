@@ -19,7 +19,7 @@ class WeatherKharkivController
             CURLOPT_CUSTOMREQUEST => "GET",
             CURLOPT_HTTPHEADER => [
                 "Content-type: application/json",
-                "x-api-key: fdaf6d3c1e6b67987ee03b7a05b18be818bf30e05204ec6654914a9b3b634b84"
+                "x-api-key: 9fa236c616250fa4529b0d0326493118e32379cf7872aca87bf5ace0699d83de"
             ],
         ]);
         $response = json_decode(curl_exec($curl));
@@ -28,10 +28,9 @@ class WeatherKharkivController
         if ($err) {
             echo "cURL Error #:" . $err;
         } else {
-           // var_dump($response);
+            // var_dump($response);
         }
-$icon=$response->data->forecast[0]->icon;
-
-        return view('kharkiv', ['response'=>$response,'icon'=>$icon]);
+        $icon = $response->data->forecast[0]->icon;
+        return view('kharkiv', ['response' => $response, 'icon' => $icon]);
     }
 }

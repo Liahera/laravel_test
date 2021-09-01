@@ -1,59 +1,26 @@
 <!DOCTYPE html>
-<html>
- <head>
-  <meta charset="utf-8" />
-  <title>HTML5</title>
-
-  <style>
-      .even {
-          background-color: rgba(0,0,0,0.4);
-      }
-      .weatherItem {
-          padding: 0.8em;
-          text-align: right;
-          color: #fff;
-          float: right;
-          width: 18%;
-          margin-right: 600px;
-      }
-      .icon{
-          position: relative;
-      }
-      .icon:before{
-          position: absolute;
-          left: 50px;
-      }
-      .weatherDesc, .weatherCity, .weatherForecastDay {
-          font-weight: 600;
-      }
-      .weatherCity {
-          text-transform: uppercase;
-      }
-      .weatherTemp {
-          font-size: 28px;
-          font-weight: 900;
-      }
-      .weatherDesc {
-          margin-bottom: 0.4em;
-      }
-      .weatherRange, .weatherWindSpeed, .weatherWindGust, .weatherForecastItem {
-          font-size: 0.8em;
-      }
-      .weatherLink, .weatherForecastItem {
-          margin-top: 0.5em;
-          text-align: left;
-      }
-  </style>
- </head>
- <body>
-      <div class="weatherItem even day">
-          <img class="icon" src="https://assetambee.s3-us-west-2.amazonaws.com/weatherIcons/PNG/{{$icon}}.png">
-          <div class="weatherCity">Харьков</div>
-          <div class="weatherTemp">{{round($response->data->forecast[0]->temperature)}}°C</div>
-          <div class="weatherDesc"> {{$response->data->forecast[0]->summary}}</div>
-          <div class="weatherRange">Влажность:{{$response->data->forecast[0]->humidity}}</div>
-          <div class="weatherWindSpeed">Скорость ветра:{{($response->data->forecast[0]->windSpeed)*1.61}} км/час</div>
-          <div class="weatherWindGust">Порыв ветра:{{($response->data->forecast[0]->windGust)*1.61}} км/час </div>
-      </div>
- </body>
+<html lang="en">
+<link rel="stylesheet" type="text/css" href="{{ asset('/css/app.css') }}" />
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+<div class="flex-container">
+    <div class="flex-container-left"><p>{{round($response->data->forecast[0]->temperature)}}°</p>
+        <h1 class="city">KHARKIV</h1></div>
+    <div class="flex-container-right">
+        <img class="icon" src="/icon/{{$icon}}.png">
+    </div>
+    <div class="flex-container-right-footer">
+        <img class="icon1" src="/icon/1.png">
+        <h1 class="number">{{$response->data->forecast[0]->humidity}}</h1>
+        <h1 class="number1">ММ</h1>
+        <img class="icon2" src="/icon/2.png">
+        <h1 class="number2">{{$response->data->forecast[0]->windSpeed}}</h1>
+        <h1 class="number3">MPH</h1>
+    </div>
+</div>
+</body>
 </html>
+
